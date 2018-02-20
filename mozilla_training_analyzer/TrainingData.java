@@ -386,10 +386,12 @@ public class TrainingData {
 				tempString = tempToken.getTokenString();
 
 				// Then, write out the length of the token string
-				outStream.write(Globals.makeBytes(tempString.length()), 0, 4);
+				outStream.write(Globals.makeBytes(tempString), 0, 4);
 
 				// Finally, write out the token itself.
-				outStream.write(tempString.getBytes(), 0, tempString.length());
+				outStream.write(tempString.getBytes(), 
+						0, 
+						tempString.getBytes().length);
 			}
 
 		}
@@ -419,10 +421,12 @@ public class TrainingData {
 				tempString = tempToken.getTokenString();
 
 				// Then, write out the length of the token string
-				outStream.write(Globals.makeBytes(tempString.length()), 0, 4);
+				outStream.write(Globals.makeBytes(tempString), 0, 4);
 
 				// Finally, write out the token itself.
-				outStream.write(tempString.getBytes(), 0, tempString.length());
+				outStream.write(tempString.getBytes(), 
+						0, 
+						tempString.getBytes().length);
 			}
 		}
 	}

@@ -89,4 +89,25 @@ public class Globals {
 
 		return retArray;
 	}
+	
+	/** This method converts the byte length of an String to 
+	 *  an array representation.
+	 *  
+	 * @param str The String
+	 *
+	 * @return A byte[] which represents the given int.
+	 * 
+	 * @author losgehts
+	 */
+	public static byte[] makeBytes(String str) {
+		
+		int len = str.getBytes().length;	
+		
+		byte[] retArray = new byte[len];
+		
+		for (int i = len-1; i >= 0; i--) {
+			retArray[i] = (byte) ((len >> (8*(3-i))) % 256);
+		}
+		return retArray;
+	}
 }
