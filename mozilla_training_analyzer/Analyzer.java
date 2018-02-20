@@ -202,16 +202,14 @@ public class Analyzer {
 		// Read in the length of the token
 		inFile.read(inBytes);
 		int tokenLength = Globals.makeInt(inBytes);
-
-		StringBuffer sb = new StringBuffer();
-
+		
 		// Read in the token
-		for (int i = 0; i < tokenLength; i++) {
-			sb.append((char) inFile.read());
-		}
+		byte[] bytes = new byte[tokenLength];
+		int a = inFile.read(bytes);
+		String tokenString = new String(bytes, "UTF-8");
 
 		// Pass the new MozillaSpamToken back to the caller.
-		return new MozillaSpamToken(sb.toString(),
+		return new MozillaSpamToken(tokenString,
 				(isGood? tokenCount : 0),
 				(isGood? 0 : tokenCount)
 		);
