@@ -1,0 +1,187 @@
+README for Bayes Junk Tool ver. 0.2
+
+/****************\
+|* INTRODUCTION *|
+\****************/
+
+This is the second release of this tool, and it is becoming a more
+refined piece of artwork (if I do say so myself :) ). There are
+many GUI and CLI refinements, and a few bugfixes as well. In
+addition, the community has stepped forward to provide sample
+token files for use with the tool. In particular, I would like to
+thank the following (in alphabetical order):
+
+* Christian Hamacher
+* Dmitry Diskin
+* Jan Gundtofte-Bruun
+* Morten Hansen
+* Rob Stow
+
+At this point, I'll turn the doc over to the disclaimer found at
+the top of all of my source files:
+
+ * The terms for using this software are as follows:
+ *
+ * USE AT YOUR OWN RISK - if this program goes insane and takes
+ * out several bystanders, don't come knocking on my door with
+ * lawyers.
+ *
+ * If you want to extend or use this software for some sort of
+ * commercial (read: money-making) software, tell me about it
+ * first. I probably won't ask for a cut because the software
+ * isn't that complicated, but I do want to know where my little
+ * baby heads after it leaves my machine.
+ *
+ * This project has become an official Mozdev project, and the
+ * website for it is http://bayesjunktool.mozdev.org. That is
+ * the best place to look for updates and information about this
+ * application. Updates are coming fast and furious right now,
+ * so it's a good idea to check it frequently.
+ *
+ * If you have any questions about this program, feel free to
+ * email any questions to bayesjunktool@mozdev.org. I'd love to
+ * hear how this program worked for you, or any suggestions or
+ * bugfixes that you believe this software should use. I believe
+ * that software should evolve and become better, so there's an
+ * extremely good chance your suggestion will make it into the
+ * next version.
+ *
+ * Oh, and for those of you curious about the author's (my) name,
+ * just email straxus@baynet.net and ask. :)
+
+/****************\
+|* REQUIREMENTS *|
+\****************/
+
+* Java 2 Standard Edition 1.4.1 (Due to the requirement for an
+XML parser to import data from XML - if you remove the one method
+that does XML importing in Analyzer.java, it will then only need
+Java 1.3.1)
+
+/************\
+|* FEATURES *|
+\************/
+
+* Viewing of data contained with Mozilla's training.dat
+
+* Exporting of data as HTML, XML, plain text, or well-formed .dat
+(you can take a .dat and drop it in the Mozilla folder, and it
+should work perfectly)
+
+* GUI which allows adding new tokens, removing tokens, and editing
+the counts associated with each token
+
+* Sorting of data on any column in the GUI. This allows you to see,
+for example, the most frequently encountered good and bad tokens in
+email
+
+* Importing of data from an existing training.dat or XML file and
+merging with an existing token file. I believe this feature is
+important as it will allow a new user to get up and running very
+quickly by importing a well-known XML file containing useful values
+for spam tokens, thus greatly reducing the training period for
+Mozilla's mail filters
+
+* Collection of sample token files in XML and DAT format that are
+ready to be merged into an existing Mozilla training.dat
+
+* Removal of certain sets of tokens based on their good or bad count
+
+* Equivalent application functionality from both the command-line
+and the GUI
+
+* Full JavaDoc of the Bayes Junk Tool API so that its functionality
+can be more easily incorporated into other programs
+
+Valid command-line arguments for this program are:
+
+-q, --quiet == silent execution of program
+-g, --gui == start up GUI version of program
+-h, -?, --help == display program usage (this message)
+-v, --version == display program version
+-f, --format [ xml | html | text | data ] == program output format
+-rg, --remove-good [number] == Remove all tokens with a good or bad count
+-rb, --remove-bad [number]  == less than the given number. If both are
+specified, those tokens which satisfy either one OR the other will be kept.
+-o, --outputfile [filename] == path to program output file
+-m, --merge [filename] == path to XML or .dat file to merge with inputfile
+-i, --inputfile [filename] == path to Mozilla training.dat
+
+Please note that the input file must include the training.dat
+filename, e.g. [path-to-profile]/xxxxxxxx.slt/training.dat
+
+/*************\
+|* EXECUTION *|
+\*************/
+
+* To build the program, type the following in the installation
+directory of the program:
+
+javac -d . mozilla_training_analyzer\*.java
+
+Adjust the directory separator as required for your platform. If you
+have downloaded the version of the Bayes Junk Tool which already
+includes binaries, this step is not necessary.
+
+* After compilation, to run the program, type:
+
+java -cp . mozilla_training_analyzer.Analyzer [Analyzer options]
+
+* To generate JavaDoc for the program's APIs, run the following
+command in the installation directory of the program:
+
+javadoc -sourcepath mozilla_training_analyzer\*.java -package -use -d doc
+
+This will generate the documentation in a "doc" subdirectory.
+
+/***********\
+|* HISTORY *|
+\***********/
+
+July 23rd, 2003 - Release 0.2
+
+--NEW FEATURES--
+
+* It is now possible to remove tokens based on their good and/or bad
+count. For instance, you can choose to remove all tokens with a good
+count which is less than 5.
+
+* It is now possible to select a group of tokens in the GUI and
+delete them. Before, only one token at a time could be selected and
+deleted.
+
+* It is now possible to begin with an XML file as the input file.
+Before, the input file could only be a well-formed DAT file.
+
+* A status bar has been added to the bottom of the GUI which
+displays the name of the file being viewed, the number of tokens in
+total, and the number of tokens selected.
+
+* The program now has a flag which displays its version information.
+
+* The GUI now has a graphical About box.
+
+* A combination of the -g and either -h or -v will cause the version
+or help information to appear in GUI form. Before, it would be
+displayed on the command-line.
+
+* The Open, Import, and Save file dialogs have been greatly sped up.
+
+* A set of "Getting Started" XML and DAT token files are now
+included with the application.
+
+--BUGFIXES--
+
+* Fixed problem encountered on some systems which caused the JVM to
+throw an OutOfMemoryError while generating output files for large
+token files (bug 3943)
+
+* It is now possible to merge a file on the command-line (bug 4094)
+
+* The File Chooser will now remember the last directory it was in
+rather than resetting to the home directory every time (bug 4108)
+
+
+June 23rd, 2003 - Release 0.1
+
+* First release, baybee.
