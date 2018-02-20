@@ -165,6 +165,9 @@ public class TrainingDataTableModel
 				return new Integer(tokenSet[row].getGoodTokenCount());
 
 			case 2:
+				
+				if (parentTrainer.getGoodMessageCount() == 0)
+					return new Float(0);				
 
 				float tempGoodFl =
 					(float) tokenSet[row].getGoodTokenCount() /
@@ -186,6 +189,9 @@ public class TrainingDataTableModel
 				return new Integer(tokenSet[row].getBadTokenCount());
 
 			case 4:
+				
+				if (parentTrainer.getBadMessageCount() == 0)
+					return new Float(0);
 
 				float tempBadFl =
 					(float) tokenSet[row].getBadTokenCount() /
