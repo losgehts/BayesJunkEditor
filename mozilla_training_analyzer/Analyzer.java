@@ -206,7 +206,7 @@ public class Analyzer {
 		// Read in the token
 		byte[] bytes = new byte[tokenLength];
 		int a = inFile.read(bytes);
-		String tokenString = new String(bytes, "UTF-8");
+		String tokenString = new String(bytes);  // seems to be better if there is no encoding given
 
 		// Pass the new MozillaSpamToken back to the caller.
 		return new MozillaSpamToken(tokenString,

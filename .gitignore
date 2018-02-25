@@ -1,3 +1,6 @@
+#ignored Folders
+tests/
+
 # Compiled class file
 *.class
 
