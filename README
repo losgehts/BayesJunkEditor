@@ -39,15 +39,16 @@ the top of all of my source files:
  * so it's a good idea to check it frequently.
  *
  * If you have any questions about this program, feel free to
- * email any questions to bayesjunktool@mozdev.org. I'd love to
- * hear how this program worked for you, or any suggestions or
- * bugfixes that you believe this software should use. I believe
- * that software should evolve and become better, so there's an
- * extremely good chance your suggestion will make it into the
- * next version.
+ * submit them to the Github repository issies tracker at
+ * https://github.com/losgehts/BayesJunkEditor/issues
+ * I'd love to hear how this program worked for you, or any
+ * suggestions or bugfixes that you believe this software should
+ * use. I believe that software should evolve and become better,
+ * so there's an extremely good chance your suggestion will make
+ * it into the next version.
  *
  * Oh, and for those of you curious about the author's (my) name,
- * just email straxus@baynet.net and ask. :)
+ * just email straxus@gmail.com and ask. :)
 
 /****************\
 |* REQUIREMENTS *|
